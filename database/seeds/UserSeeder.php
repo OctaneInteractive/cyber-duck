@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
             'name' => "Wayne Smallman",
             'email' => 'wayne.smallman@octane.uk.net',
             'email_verified_at' => date("Y-m-d H:i:s"),
-            'password' => 'e6z+CU7/(]Xa8[8KWUneQ4',
+            'password' => Hash::make('e6z+CU7/(]Xa8[8KWUneQ4'),
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
