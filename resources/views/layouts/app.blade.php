@@ -33,7 +33,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/companies"><i class="fad fa-building"></i>&nbsp;Companies</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/employees"><i class="fad fa-users"></i>&nbsp;Employees</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
