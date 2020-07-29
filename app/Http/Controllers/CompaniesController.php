@@ -1,5 +1,7 @@
 <?php
 
+use App\Companies;
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -23,7 +25,7 @@ class CompaniesController extends Controller
      */
     public function create()
     {
-        //
+        return view('companies.create');
     }
 
     /**
@@ -34,7 +36,24 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif|min:100|max:2048'
+        ]);
+
+        $logoName = time() . '.' . $request->logo->extension();  
+   
+        $request->logo->move(public_path('logos'), $logoName);
+
+        $companies = new Companies([
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'logo' => public_path('logos') . '/' . $logoName
+        ]);
+
+        $companies->save();
+        return redirect('/companies')->with('success', "Company saved!");
     }
 
     /**
