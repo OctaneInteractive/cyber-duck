@@ -3,6 +3,9 @@
 <div class="row">
   <div class="col-sm-8 offset-sm-2">
     <h1 class="display-3">Companies</h1>
+    <div class="float-right mb-2">
+      <a class="btn btn-primary" href="/companies/create" role="button"><i class="fas fa-plus"></i>&nbsp;New</a>
+    </div>
   <div>
     @if ($errors->any())
       <div class="alert alert-danger">
@@ -32,12 +35,12 @@
             <td><strong>{{ $company->name }}</strong></td>
             <td>{{ $company->email }}</td>
             <td><img src="{{ asset('logos/' . $company->logo) }}" width="50"></td>
-            <td><a class="btn btn-primary btn-sm" href="/companies/edit/{{ $company->id }}" role="button">Edit</a></td>
+            <td><a class="btn btn-primary btn-sm" href="/companies/edit/{{ $company->id }}" role="button"><i class="fas fa-pen-alt"></i></a></td>
             <td>
               <form action="{{ route('companies.destroy', [ 'id' => $company->id ] )}}" method="post">
                 @csrf
                 @method('DELETE')
-                <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-trash"></i></button>
               </form>
             </td>
           </tr>
@@ -45,8 +48,7 @@
         </tbody>
         <tfoot>
           <tr>
-            <td colspan="5">{{ $companies->links() }}</td>
-            <td><a class="btn btn-primary" href="/companies/create" role="button">New</a></td>
+            <td colspan="6">{{ $companies->links() }}</td>
           </tr>
         </tfoot>
       </table>

@@ -18,7 +18,7 @@ trait MenuTrait {
         'href' => \URL::to('/') . '/companies',
         'icon' => 'far fa-fw fa-building',
         'label' => ($numberOfCompanies > 0) ? $numberOfCompanies : 0,
-        'label_color' => 'success',
+        'label_color' => 'info',
         'class' => '',
     ];
 
@@ -32,7 +32,7 @@ trait MenuTrait {
         'href' => \URL::to('/') . '/employees',
         'icon' => 'fas fa-fw fa-user-tie',
         'label' => ( $numberOfEmployees > 0 ) ? $numberOfEmployees : 0,
-        'label_color' => 'success',
+        'label_color' => 'info',
         'class' => '',
     ];
 
