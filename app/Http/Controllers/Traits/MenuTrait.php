@@ -16,8 +16,8 @@ trait MenuTrait {
         'text' => "Companies",
         'url' => 'companies',
         'href' => \URL::to('/') . '/companies',
-        'icon' => 'far fa-fw fa-file',
-        'label' => $numberOfCompanies,
+        'icon' => 'far fa-fw fa-building',
+        'label' => ($numberOfCompanies > 0) ? $numberOfCompanies : 0,
         'label_color' => 'success',
         'class' => '',
     ];
@@ -30,8 +30,8 @@ trait MenuTrait {
         'text' => "Employees",
         'url' => 'employees',
         'href' => \URL::to('/') . '/employees',
-        'icon' => 'far fa-fw fa-file',
-        'label' => $numberOfEmployees,
+        'icon' => 'fas fa-fw fa-user-tie',
+        'label' => ( $numberOfEmployees > 0 ) ? $numberOfEmployees : 0,
         'label_color' => 'success',
         'class' => '',
     ];
