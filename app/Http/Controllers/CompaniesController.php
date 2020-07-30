@@ -113,7 +113,7 @@ class CompaniesController extends Controller
         ]);
 
         $company = \App\Companies::find($id);
-        $company->name =  $request->get('name');
+        $company->name = $request->get('name');
         $company->email = $request->get('email');
         $company->save();
 

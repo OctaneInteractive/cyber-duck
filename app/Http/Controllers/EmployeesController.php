@@ -13,7 +13,13 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        //
+
+        $employees = \App\Employees::simplePaginate(10);
+
+        return view('employees.index', [
+            'employees' => $employees
+        ]);
+
     }
 
     /**
@@ -23,7 +29,13 @@ class EmployeesController extends Controller
      */
     public function create()
     {
-        //
+
+        $companies = \App\Companies::get();
+
+        return view('employees.create', [
+            'companies' => $companies
+        ]);
+
     }
 
     /**
@@ -34,7 +46,35 @@ class EmployeesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'name_first' => 'required',
+            'name_last' => 'required',
+            'email' => 'required|email',
+            'telephone' => 'required|numeric|digits_between:9,11',
+            'company_id' => 'required|numeric'
+        ]);
+
+        try {
+
+            $employees = new \App\Employees([
+                'name_first' => $request->get('name_first'),
+                'name_last' => $request->get('name_last'),
+                'company_id' => $request->get('company_id'),
+                'email' => $request->get('email'),
+                'telephone' => $request->get('telephone')
+            ]);
+
+            $employees->save();
+
+            return redirect('/employees')->with('success', "Employee saved!");
+
+        } catch(Exception $e) {
+
+            return back()->withInput();
+
+        }
+
     }
 
     /**
@@ -56,7 +96,10 @@ class EmployeesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $employee = \App\Employees::find($id);
+        return view('employees.edit', [
+            'employee' => $employee
+        ]);
     }
 
     /**
@@ -68,7 +111,23 @@ class EmployeesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $request->validate([
+            'name_first' => 'required',
+            'name_last' => 'required',
+            'email' => 'required|email',
+            'telephone' => 'required|numeric|digits_between:9,11'
+        ]);
+
+        $employee = \App\Employees::find($id);
+        $employee->name_first = $request->get('name_first');
+        $employee->name_last = $request->get('name_last');
+        $employee->email = $request->get('email');
+        $employee->telephone = $request->get('telephone');
+        $employee->save();
+
+        return redirect('/employees')->with('success', "Employee updated!");
+
     }
 
     /**

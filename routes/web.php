@@ -38,3 +38,13 @@ Route::delete('/companies/{id}', 'CompaniesController@destroy')->name('companies
 // Employees.
 
 Route::get('/employees', 'EmployeesController@index');
+
+Route::get('/employees/create', 'EmployeesController@create')->name('employees.create');
+
+Route::post('/employees/store', 'EmployeesController@store')->name('employees.store');
+
+Route::get('/employees/edit/{id}', 'EmployeesController@edit')->name('employees.edit');
+
+Route::patch('/employees/{id}', 'EmployeesController@update')->name('employees.update');
+
+Route::delete('/employees/{id}', 'EmployeesController@destroy')->name('employees.destroy');
