@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('adminlte::page')
 @section('content')
 <div class="row">
   <div class="col-sm-8 offset-sm-2">

@@ -5,8 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+use App\Traits\MenuTrait;
+
 class CompaniesController extends Controller
 {
+
+    use MenuTrait;
+
+    public $sidebar;
+
+    public function __construct()
+    {
+        $this->sidebar = $this->getSidebar();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,6 +30,7 @@ class CompaniesController extends Controller
         $companies = \App\Companies::simplePaginate(10);
 
         return view('companies.index', [
+            'menu' => $this->sidebar['menu'],
             'companies' => $companies
         ]);
 
@@ -30,7 +43,9 @@ class CompaniesController extends Controller
      */
     public function create()
     {
-        return view('companies.create');
+        return view('companies.create', [
+            'menu' => $this->sidebar['menu']
+        ]);
     }
 
     /**
@@ -93,6 +108,7 @@ class CompaniesController extends Controller
     {
         $company = \App\Companies::find($id);
         return view('companies.edit', [
+            'menu' => $this->sidebar['menu'],
             'company' => $company
         ]);
     }

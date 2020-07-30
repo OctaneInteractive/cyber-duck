@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Traits\MenuTrait;
+
 class HomeController extends Controller
 {
+
+    use MenuTrait;
+
     /**
      * Create a new controller instance.
      *
@@ -23,6 +28,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $sidebar = $this->getSidebar();
+
+        return view('admin')->with($sidebar);
+
     }
 }

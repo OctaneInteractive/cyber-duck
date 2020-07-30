@@ -4,9 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Traits\MenuTrait;
+
 class EmployeesController extends Controller
 {
-    /**
+ 
+    use MenuTrait;
+
+    public $sidebar;
+
+    public function __construct()
+    {
+        $this->sidebar = $this->getSidebar();
+    }
+
+   /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -17,6 +29,7 @@ class EmployeesController extends Controller
         $employees = \App\Employees::simplePaginate(10);
 
         return view('employees.index', [
+            'menu' => $this->sidebar['menu'],
             'employees' => $employees
         ]);
 
@@ -33,6 +46,7 @@ class EmployeesController extends Controller
         $companies = \App\Companies::get();
 
         return view('employees.create', [
+            'menu' => $this->sidebar['menu'],
             'companies' => $companies
         ]);
 
@@ -98,6 +112,7 @@ class EmployeesController extends Controller
     {
         $employee = \App\Employees::find($id);
         return view('employees.edit', [
+            'menu' => $this->sidebar['menu'],
             'employee' => $employee
         ]);
     }
