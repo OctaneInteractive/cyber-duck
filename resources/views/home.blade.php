@@ -12,7 +12,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    {{ __('Welcome to the Cyber Duck CRUD demonstration!') }}
+                    <p>{{ __('Welcome to the Cyber Duck CRUD demonstration!') }}</p>
+                    <a class="btn btn-primary" href="/companies/create" role="button">New Company</a>
+                    <a class="btn btn-primary" href="/employees/create" role="button">New Employee</a>
                 </div>
             </div>
         </div>
