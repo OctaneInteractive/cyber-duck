@@ -145,5 +145,6 @@ class CompaniesController extends Controller
             return back()->withInput();
 
         }
+
     }
 }

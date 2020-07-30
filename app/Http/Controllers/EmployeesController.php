@@ -138,6 +138,20 @@ class EmployeesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        try {
+ 
+            $companies = \App\Employees::find($id);
+    
+            $companies->delete();
+
+            return redirect('/employees')->with('success', "Employee deleted!");
+
+        } catch(Exception $e) {
+
+            return back()->withInput();
+
+        }
+
     }
 }

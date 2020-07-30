@@ -14,6 +14,7 @@
         </ul>
       </div>
     @endif
+    @if (count($employees) > 0)
     <table class="table">
       <thead>
         <tr>
@@ -25,7 +26,6 @@
         </tr>
       </thead>
       <tbody>
-      @if ($employees)
         @foreach ($employees as $employee)
         <tr>
           <th scope="row">{{ $employee->id }}</th>
@@ -42,11 +42,20 @@
           </td>
         </tr>
         @endforeach
-        {{ $employees->links() }}
-      @endif
+        <tfoot>
+          <tr>
+            <td colspan="5">{{ $employees->links() }}</td>
+            <td><a class="btn btn-primary" href="/employees/create" role="button">New</a></td>
+          </tr>
+        </tfoot>
       </tbody>
     </table>
-    <a class="btn btn-primary" href="/employees/create" role="button">New</a>
+    @else
+    <div class="alert alert-info">
+      <p>Create a new Employee</p>
+      <a class="btn btn-primary" href="/employees/create" role="button">New</a>
+    </div>
+    @endif
   </div>
 </div>
 @endsection
