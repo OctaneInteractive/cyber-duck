@@ -20,7 +20,7 @@ class EmployeesSeeder extends Seeder
                 'telephone' => mt_rand(10000000000, 99999999999),
                 'company_id' => rand(1, 35),
                 'created_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
             ]);
         }
     }

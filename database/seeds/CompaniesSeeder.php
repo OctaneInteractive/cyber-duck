@@ -18,7 +18,7 @@ class CompaniesSeeder extends Seeder
                 'email' => $faker->email,
                 'logo' => $faker->image(public_path('logos'), 100, 100, 'business', false),
                 'created_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
             ]);
         }
     }
