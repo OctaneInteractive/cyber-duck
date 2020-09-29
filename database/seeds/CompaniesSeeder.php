@@ -14,11 +14,11 @@ class CompaniesSeeder extends Seeder
     {
         for($i = 0; $i < 35; $i++) {
             DB::table('companies')->insert([
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s"),
                 'name' => $faker->company,
                 'email' => $faker->email,
-                'logo' => $faker->image(public_path('logos'), 100, 100, 'business', false),
-                'created_at' => date("Y-m-d H:i:s"),
-                'updated_at' => date("Y-m-d H:i:s")
+                'logo' => $faker->image(public_path('logos'), 100, 100, 'business', false)
             ]);
         }
     }

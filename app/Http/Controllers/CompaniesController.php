@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+use App\File;
+
 use App\Traits\MenuTrait;
 
 class CompaniesController extends Controller
@@ -150,7 +152,7 @@ class CompaniesController extends Controller
  
             $companies = \App\Companies::find($id);
     
-            unlink('logos/' . $companies->logo);
+            \File::delete('logos/' . $companies->logo);
 
             $companies->delete();
 
